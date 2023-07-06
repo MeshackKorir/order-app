@@ -1,24 +1,39 @@
 import React, { useState } from 'react';
 
-function LoginForm({ onLogin }) {
+function ResetForm({ onLogin }) {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+
+  
+  
   function handleSubmit(e) {
+      
+      
+      const password = Math.floor(1000 + Math.random() * 9000);
+
+const details = {
+username: username,
+password: password
+}
+
+console.log(details);
+
     e.preventDefault();
-    fetch("/login", {
-      method: "POST",
+    fetch("/reset", {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(details),
     })
       .then((r) => {
         if (r.ok) {
-          r.json().then((user) => onLogin(user));
+        //   r.json().then((user) => onLogin(user));
+        setErrorMessage("Your new password is " + password + " and has been sent to your email, remember to change it");
+
         } else {
-          setErrorMessage("Login details do not match");
+          setErrorMessage("An error occurred. Please try again.");
         }
       })
       .catch((error) => {
@@ -36,11 +51,11 @@ function LoginForm({ onLogin }) {
                 <div className="main_login">
                   <div className="login_left col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div className="login_box">
-                      <h2 className="title">Sign in</h2>
+                      <h2 className="title">Reset Password</h2>
                       {errorMessage && (
                         <div
                           style={{
-                            backgroundColor: "red",
+                            backgroundColor: "green",
                             color: "white",
                             padding: "10px",
                             marginBottom: "10px",
@@ -65,33 +80,12 @@ function LoginForm({ onLogin }) {
                               />
                             </li>
                             <li>
-                              <label htmlFor="Password">Password</label>
-                              <input
-                                className="form-control"
-                                type="password"
-                                id="password"
-                                autoComplete="current-password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                              />
-                            </li>
-                            <li className="half checkbox">
-                              <input
-                                id="check4"
-                                type="checkbox"
-                                name="check"
-                                value="Bike"
-                              />
-                              <label htmlFor="check4">Remember Me</label>
-                            </li>
-                       
-                            <li>
                               <button
                                 type="submit"
                                 className="loginbutton red_btn trans squre-btn hvr-ripple-out"
                                 name="Login"
                               >
-                                Login
+                                Reset
                               </button>
                             </li>
                           </ul>
@@ -152,4 +146,4 @@ function LoginForm({ onLogin }) {
   );
 }
 
-export default LoginForm;
+export default ResetForm;

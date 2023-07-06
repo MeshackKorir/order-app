@@ -11,16 +11,21 @@ class OrdersController < ApplicationController
     end
 
     def index
-      orders = Order.all
-      render json: orders
+      orders = Order.order(created_at: :desc)
+      render json: orders, include: ['user', 'orderitems', 'orderitems.food'] 
     end
 
     def show
       user = User.find(params[:id])
       orders = user.orders.includes(:orderitems)
-      render json: orders, include: { orderitems: { include: :foods } }
+      render json: orders, include: ['orderitems', 'orderitems.food']
+
     end
   
+   
+
+
+
     private
   
     def order_params

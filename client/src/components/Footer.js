@@ -28,31 +28,27 @@ function Footer() {
                     <div className="title">Quick Links</div>
                         <div className="main_cnt">
                             <ul>
-                                <li><a href="about.html" className="trans" title="About us">About us</a></li>
-                                <li><a href="faq.html" className="trans" title="Faq">Faq</a></li>
-                                <li><a href="contactus.html" className="trans" title="Contacts">Contacts</a></li>
-                                <li><a href="login.html" className="trans" title="Login">Login</a></li>
-                                <li><a href="login.html" className="trans" title="Register">Register</a></li>
-                                <li><a href="terms_conditions.html" className="trans" title="Terms and conditions">Terms and conditions</a></li>
+                                <li><a href="#" className="trans" title="About us">About us</a></li>
+                                <li><a href="#" className="trans" title="Faq">Faq</a></li>
+                                <li><a href="#" className="trans" title="Contacts">Contacts</a></li>
+                                <li><a href="#" className="trans" title="Terms and conditions">Terms and conditions</a></li>
                             </ul>
                         </div>
                     </div>
                     <div className="col-lg-5 col-md-5 col-sm-6 col-xs-12 location">
                         <div className="title">Our Location</div>
-                        <div className="main_cnt"> <span className="address"><a href="#">234 Main Street, Uni 01, New Mexico City</a></span> <span className="time1">Mon - Fri: 08:00 am - 10:00 pm</span> <span className="time2">Sat - Sun: 10:00 am - 11:00 pm<strong></strong></span> <span className="conact"><a href="tel:+01234567890">+01 (234) 56 56 789</a></span> </div>
+                        <div className="main_cnt"> <span className="address"><a href="#">234 Main Street, Ngong Road, Nairobi</a></span> <span className="time1">Mon - Fri: 08:00 am - 10:00 pm</span> <span className="time2">Sat - Sun: 10:00 am - 11:00 pm<strong></strong></span> <span className="conact"><a href="tel:+01234567890">+01 (234) 56 56 789</a></span> </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12 subscribe">
                         <div className="title">Subscribe Us</div>
                         <div className="main_cnt">
                             <p className="sbcr_label">Subscribe to the La Vie newsletter to
                                 <br/> get regular update about offers</p>
-                            <form method="post" id="subscribeform" action="http://glorywebsdemo.com/themeforest/html/carveordering/thank-you.html">
                                 <div className="sbcrb_input">
                                     <input type="text" name="subscribeemail" className="form-control" placeholder="Enter your email"/>
                                     <button className="subscribebutton send" name="getbutton" type="submit">
                                     </button>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
