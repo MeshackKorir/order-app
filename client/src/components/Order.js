@@ -1,6 +1,6 @@
 import React, { useState  } from 'react'
 
-function Order({foods , user}) {
+function Order({foods , user, updateCart}) {
     const [cartItems, setCartItems] = useState([]);
   const [message, setMessage] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
@@ -9,6 +9,7 @@ function Order({foods , user}) {
     let totalPrice = 0;
     cartItems.forEach((item) => {
       totalPrice += item.price;
+      updateCart(totalPrice)
     });
     return totalPrice;
   };

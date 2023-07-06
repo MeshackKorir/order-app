@@ -40,6 +40,7 @@ function Addfood() {
   }
 
   return (
+    <>
     <section id="login">
       <div className="login_section">
         <div className="container">
@@ -134,6 +135,12 @@ function Addfood() {
         </div>
       </div>
     </section>
+
+
+
+
+
+    </>
   );
 }
 

@@ -10,6 +10,9 @@ function Main({foods , user, updateCart}) {
       updateCart(totalPrice)
       return totalPrice;
     };
+
+   
+  
     const handleAddToCart = (food) => {
       setCartItems((prevCartItems) => [...prevCartItems, food]);
     };
