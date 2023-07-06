@@ -29,17 +29,17 @@ function Header({ user, onLogout, cart}) {
                                                         <li> <NavLink className="trans" to={`/order` }>
                                                                 Order
                                                         </NavLink></li>
-                                                        <li> <NavLink className="trans" to={`/addfood` }>
-                                                                Addfood
-                                                        </NavLink></li>
 
                                                         <li> <NavLink className="trans" to={`/MyOrders` }>
                                                                 MyOrders
                                                         </NavLink></li>
                
+                                                        <li> <NavLink className="trans" to={`/addfood` }>
+                                                                Admin
+                                                        </NavLink></li>
                                                         {user ? (
     <>
-                        <li><a href="index.html">Welcome {user.username}!</a></li>
+                        <li><a href="#">Welcome {user.username}!</a></li>
                         <li><a><span onClick={handleLogout}>Logout</span></a></li>
     </>
       ) : (

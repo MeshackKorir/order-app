@@ -9,4 +9,5 @@ post "/signup", to: 'users#create'
 get "/me", to:'users#show'
 post "/login", to: 'sessions#create'
 delete '/logout', to:'sessions#destroy'
+patch '/reset', to:'users#reset'
 end

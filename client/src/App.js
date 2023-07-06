@@ -14,16 +14,8 @@ function App() {
   const [foods, setFoods] = useState([]);
   const [cart, setCart] = useState(0);
   const [orders, setOrders] = useState([]);
-  const [customers, setCustomers] = useState([]);
-  const [search, setSearch] = useState("");
-  const [calculations, setCalculations] = useState([]);
+  const [allorders, setAllOrders] = useState([]);
   const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    fetch("/foods")
-      .then((r) => r.json())
-      .then((foods) => setFoods(foods));
-  }, []);
 
   useEffect(() => {
     // auto-login
@@ -31,10 +23,19 @@ function App() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user);
+
           if (user && user.id) {
             fetch(`/orders/${user.id}`)
               .then((r) => r.json())
               .then((orders) => setOrders(orders));
+
+            fetch("/foods")
+              .then((r) => r.json())
+              .then((foods) => setFoods(foods));
+
+            fetch("/orders")
+              .then((r) => r.json())
+              .then((allorders) => setAllOrders(allorders));
           }
         });
       }
@@ -47,17 +48,6 @@ function App() {
 
   function handleDeleteFood(id) {
     const updatedFoods = foods.filter((food) => food.id !== id);
-    setFoods(updatedFoods);
-  }
-
-  function handleUpdateFood(updatedFoodObj) {
-    const updatedFoods = foods.map((food) => {
-      if (food.id === updatedFoodObj.id) {
-        return updatedFoodObj;
-      } else {
-        return food;
-      }
-    });
     setFoods(updatedFoods);
   }
 
@@ -79,14 +69,21 @@ function App() {
           <Route
             path="/"
             element={
-              <Main
+              <Main foods={foods} user={user} updateCart={handleUpdateCart} />
+            }
+          />
+          <Route
+            path="/addfood"
+            element={
+              <Addfood
                 foods={foods}
                 user={user}
-                updateCart={handleUpdateCart}
+                allorders={allorders}
+                updateFood={handleDeleteFood}
+                handleAddFood={handleAddFood}
               />
             }
           />
-          <Route path="/addfood" element={<Addfood user={user} />} />
           <Route
             path="/order"
             element={
@@ -106,7 +103,6 @@ function App() {
 
           {/* <Route path="/admin" element={<Admin user ={user}  foods ={foods} onFoodDelete={handleDeleteFood}
         onUpdateFood={handleUpdateFood}/>} /> */}
-
         </Routes>
         <Footer />
       </div>
