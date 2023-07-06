@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(version: 2023_07_04_123140) do
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.integer "quantity"
-    t.integer "description"
+    t.text "description"
     t.integer "price"
+    t.string "image", default: "one.jpg"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

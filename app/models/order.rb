@@ -1,2 +1,5 @@
 class Order < ApplicationRecord
-end
+    # Associations
+    belongs_to :user
+    has_many :orderitems
+  end

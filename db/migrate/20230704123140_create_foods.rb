@@ -3,8 +3,9 @@ class CreateFoods < ActiveRecord::Migration[6.1]
     create_table :foods do |t|
       t.string :name
       t.integer :quantity
-      t.integer :description
+      t.text :description
       t.integer :price
+      t.string :image, default: 'one.jpg'
       t.timestamps
     end
   end
