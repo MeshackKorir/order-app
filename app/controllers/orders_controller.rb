@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
-
+  before_action :authenticate_user
     def create
       order = Order.new(order_params)
       if order.save
@@ -34,5 +34,17 @@ class OrdersController < ApplicationController
     def user_not_found
       render json: { error: "User not found" }, status: :not_found
     end
+
+    def logged_in?
+      session[:user_id].present?
+    end
+  
+    def authenticate_user
+      unless logged_in?
+        render json: { error: 'Unauthorized' }, status: :unauthorized
+      end
+    end
+
+
   end
   
