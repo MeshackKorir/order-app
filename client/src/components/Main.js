@@ -103,7 +103,7 @@ function Main({foods , user, updateCart}) {
                                 <div className="p_card">
                                     <div className="row">
                                {/* Populate Food Data */}
-                               {foods.map((food) => (
+                               {foods && foods.length > 0 && foods.map((food) => (
             <div key={food.id} className="col-lg-6 col-md-6 col-sm-6 col-xs-12">
               <ul>
                 <li>

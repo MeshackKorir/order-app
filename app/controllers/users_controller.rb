@@ -20,11 +20,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def reset
+    @username = User.find_by(username: params[:username].to_s)
+    if @username.update(password: params[:password].to_s)
+      render json: @username, status: :ok
+    else
+      render json: { error: 'Failed to update username.' }, status: :unprocessable_entity
+    end
+  end
+
+
   private
 
   def user_params
     params.permit(:username, :password, :address, :phone, :email, :password_confirmation)
   end
+  # def reset_params
+  #   params.permit(:username, :password)
+  # end
+
 
   def authenticate_user
     unless logged_in?

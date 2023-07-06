@@ -143,11 +143,7 @@ function RegisterForm({ onLogin }) {
                               />
                               <label htmlFor="check4">Remember Me</label>
                             </li>
-                            <li className="half text-right">
-                              <a href="#" className="trans">
-                                Forgotten Password?
-                              </a>
-                            </li>
+                    
                             <li>
                               <button
                                 type="submit"
